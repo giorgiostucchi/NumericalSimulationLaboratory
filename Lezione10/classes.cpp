@@ -306,27 +306,20 @@ void Population::SortByFitness(void)
 
 void Population::EvolutionaryStep(void)
 {
-    // cout << "I'm here for evolutionary step " << endl;
     vector<Individual> new_population;
-    // cout << "I'm here ..." << endl;
 
     for (int i = 0; i < m_ind / 2; i++)
     {
-        // cout << "I'm inside the cycle... ";
         pair<Individual, Individual> parents = Selection();
         pair<Individual, Individual> crossed_parents = Crossover(parents);
-        // cout << "I've crossed the parents...";
         Individual son1 = Mutation(crossed_parents.first);
         Individual son2 = Mutation(crossed_parents.second);
-        // cout << "Generated sons..." << endl;
 
         new_population.push_back(son1);
         new_population.push_back(son2);
-        // cout << "end of cycle reached " << endl;
     }
 
     m_population = new_population;
-    // cout << "I'm here for end of  evolutionary step " << endl;
 }
 
 void Population ::PrintFitness()
@@ -476,9 +469,9 @@ Individual Population::Mutation(Individual indiv)
     }
     if (r < 0.3 && r > 0.2) // mutation 2, shifting a block of m+1 genes
     {
-        int start = int(m_gen.Rannyu(1, m_ngenes - 1));
+        int start = int(m_gen.Rannyu(1, m_ngenes - 1)); //first shifted cell
         int m = int(m_gen.Rannyu(0, m_ngenes - start - 2));
-        int n = int(m_gen.Rannyu(1, m_ngenes - m - start - 1));
+        int n = int(m_gen.Rannyu(1, m_ngenes - m - start - 1)); //how much we are shifting
         rotate(temp_genes.begin() + start, temp_genes.begin() + start + m + 1, temp_genes.begin() + start + m + n + 1);
     }
     if (r < 0.5 && r > 0.4) // mutation 3, exchanging position of two blocks of size m
