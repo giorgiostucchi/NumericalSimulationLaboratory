@@ -310,7 +310,7 @@ void Population::EvolutionaryStep(void)
     vector<Individual> new_population;
     // cout << "I'm here ..." << endl;
 
-    for (int i = 0; i < m_ind; i++)
+    for (int i = 0; i < m_ind / 2; i++)
     {
         // cout << "I'm inside the cycle... ";
         pair<Individual, Individual> parents = Selection();

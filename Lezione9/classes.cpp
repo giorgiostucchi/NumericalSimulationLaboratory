@@ -121,10 +121,10 @@ Population::Population(int individuals, Map &myMap) : m_map(myMap)
     {
         vector<int> vect(m_ngenes);
         iota(vect.begin(), vect.end(), 1);
-        myVectUtils::Print(vect);
+        //myVectUtils::Print(vect);
         rnd_shuffle(vect.begin() + 1, vect.end(), m_gen);
-        myVectUtils::Print(vect);
-        cout << endl;
+        //myVectUtils::Print(vect);
+        //cout << endl;
         Individual indiv(vect, &m_map);
         // indiv.PrintGenes();
 
@@ -179,7 +179,7 @@ void Population::EvolutionaryStep(void)
 {
     vector<Individual> new_population;
 
-    for(int i = 0; i < m_ind; i++){
+    for(int i = 0; i < m_ind / 2; i++){
         pair<Individual, Individual> parents = Selection();
         pair<Individual, Individual> crossed_parents = Crossover(parents);
         Individual son1 = Mutation(crossed_parents.first);
@@ -188,8 +188,6 @@ void Population::EvolutionaryStep(void)
         new_population.push_back(son1);
         new_population.push_back(son2);
     }
-
-    m_population = new_population;
 }
 
 void Population ::PrintFitness()
@@ -244,7 +242,7 @@ double Population ::GetFitnessHalf()
     double ave = sum / double(m_ind / 2);
     double ave2 = sum2 / double(m_ind / 2);
     double variance = ave2 - ave*ave;
-    cout << variance << endl;
+    //cout << variance << endl;
     return sum / double(m_ind / 2);
 }
 

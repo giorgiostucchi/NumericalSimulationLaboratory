@@ -90,7 +90,7 @@ int main()
    fstream f;
    f.open("data_100_chi_squared.txt", ios::out);
 
-   for (int i = 0; i < 100; i++)
+   for (int i = 0; i < 100; i++) // calculate chi squared 100 times
    {
       vector<double> bins(100, 0); // inizialize a vector of size 100 with zeros
       for (int j = 0; j < n; j++)

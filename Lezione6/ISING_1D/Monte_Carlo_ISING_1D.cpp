@@ -197,8 +197,7 @@ void Move(int metro)
       {
         s[o] = -sm;
         accepted++;
-      } // cout<<"flipped"<<endl;}
-      // else {cout<<"non flipped" << endl;}
+      }
     }
     else // Gibbs sampling
     {
@@ -213,7 +212,7 @@ void Move(int metro)
 
 double Boltzmann(int sm, int ip)
 {
-  double ene = -J * sm * (s[Pbc(ip - 1)] + s[Pbc(ip + 1)]) - h * sm;  // check if this is right
+  double ene = -J * sm * (s[Pbc(ip - 1)] + s[Pbc(ip + 1)]) - h * sm;
   return ene;
 }
 
@@ -226,11 +225,9 @@ void Measure()
   for (int i = 0; i < nspin; ++i)
   {
     u += -J * s[i] * s[Pbc(i + 1)] - 0.5 * h * (s[i] + s[Pbc(i + 1)]);
-    // INCLUDE YOUR CODE HERE
     m += s[i];
   }
   walker[iu] = u;
-  // INCLUDE YOUR CODE HERE
   walker[ic] = u*u;
   walker[im] = m;
   walker[ix] = m*m;

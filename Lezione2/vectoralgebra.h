@@ -135,15 +135,6 @@ template <typename T> std::vector<T> operator^( const std::vector<T> &a , T c) {
   std::vector<T> result(a.size());
   for (int i = 0; i < static_cast<int>(a.size()); i++) result[i] = pow(a[i], c) ;  
   
-  // oppure il ciclo for puo' essere sostituito da
-  
-  // double fact = 1./c
-  // result = a * fact ;
-  
-  // Alternativamente si puo' usare l'algoritmo transform della STL con una lambda function
-  //    
-  //    std::transform(std::begin(a), std::end(a), std::begin(result), [&c](T x){ return x / c; } );
-  
   return result;
   
 }
